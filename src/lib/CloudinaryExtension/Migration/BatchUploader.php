@@ -71,8 +71,7 @@ class BatchUploader
             $this->logger->notice(sprintf(self::MESSAGE_UPLOADED, $absolutePath . ' - ' . $relativePath));
         } catch (AlreadyExists $e) {
             $image->tagAsSynchronized();
-            $this->countMigrated++;
-            $this->logger->notice(sprintf(self::MESSAGE_UPLOADED, $image->getFilename()));
+            $this->logger->notice(sprintf(self::MESSAGE_UPLOADED_EXISTS, $image->getFilename()));
         } catch (\Exception $e) {
             $this->errors[] = $e;
             $this->countFailed++;
